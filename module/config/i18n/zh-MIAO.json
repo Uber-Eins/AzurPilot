@@ -1703,6 +1703,12 @@
       "slot_2": "使用于2号位喵",
       "slot_3": "使用于3号位喵",
       "slot_4": "使用于4号位喵"
+    },
+    "SkillAutoSwitch": {
+      "name": "自动换技能喵",
+      "help": "自动换到下一个还没学完的技能继续学喵",
+      "True": "开启喵",
+      "False": "关闭喵"
     }
   },
   "ControlExpOverflow": {
@@ -4547,6 +4553,9 @@
       "CommissionIncomeHeaderAvg": "平均/次喵",
       "CommissionIncomeTotalCommissions": "委托总次数: {value}喵",
       "CommissionIncomeRecentTitle": "最近委托记录喵"
+    },
+    "Tactical": {
+      "SkillAutoSwitch": "Gui.Tactical.SkillAutoSwitch"
     },
     "OpsiScheduling": {
       "UseSmartSchedulingOperationCoinsPreserve": "获取X个凭证喵",
