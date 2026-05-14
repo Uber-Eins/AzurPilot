@@ -1,4 +1,4 @@
-{
+﻿{
   "Menu": {
     "Alas": {
       "name": "✨ 智慧港区指挥部",
@@ -611,8 +611,7 @@
       "help": "Optimization.OcrDevice.help",
       "auto": "auto",
       "cpu": "cpu",
-      "gpu": "gpu",
-      "ane": "ane"
+      "gpu": "gpu"
     },
     "ScreenshotInterval": {
       "name": "🐢 寻路截图放慢步子",
@@ -1011,11 +1010,9 @@
       "war_archives_20220428_cn": "archives Rondo at Rainbows End",
       "war_archives_20220526_cn": "archives Pledge of the Radiant Court",
       "war_archives_20220728_cn": "archives Aquilifers Ballade",
-      "war_archives_20220818_cn": "archives Operation Convergence",
       "war_archives_20220915_cn": "archives Violet Tempest Blooming Lycoris",
       "war_archives_20221222_cn": "archives Parallel Superimposition",
       "war_archives_20230223_cn": "archives Revelations of Dust",
-      "war_archives_20230803_cn": "archives Anthem of Remembrance",
       "war_archives_20231026_cn": "archives Tempesta and the Fountain of Youth"
     },
     "Mode": {
@@ -1047,10 +1044,6 @@
     "UseRecommendFleet": {
       "name": "💡 系统一键配队 (摸鱼必备)",
       "help": "在困难图里，直接使用游戏系统推荐的阵容自动配队，省心省力喵~"
-    },
-    "DefeatWithdraw": {
-      "name": "Campaign.DefeatWithdraw.name",
-      "help": "Campaign.DefeatWithdraw.help"
     }
   },
   "StopCondition": {
@@ -1061,10 +1054,6 @@
     "OilLimit": {
       "name": "🛢️ 石油红线警告 (< X 后推迟)",
       "help": "指挥官，地主家也没有余粮啦！石油跌破 X 时就会暂停任务，等油管涨起来再继续出击喵！"
-    },
-    "CoinLimit": {
-      "name": "StopCondition.CoinLimit.name",
-      "help": "StopCondition.CoinLimit.help"
     },
     "RunCount": {
       "name": "🏁 劳逸结合 (出击 X 次后下班)",
@@ -1673,10 +1662,6 @@
       "oil": "💎钻石 > 🛢️石油 > 🧊魔方",
       "custom": "我自己定！(自定义)"
     },
-    "AddShortest": {
-      "name": "Commission.AddShortest.name",
-      "help": "Commission.AddShortest.help"
-    },
     "CustomFilter": {
       "name": "📝 神秘代码委托单 (自定义)",
       "help": "选了自定义的话，就在这里写你的跑腿优先级喵~"
@@ -1761,10 +1746,6 @@
       "only_05_hour": "半小时小项目+没别的选才用",
       "only_no_project": "实在没别的选才用",
       "do_not_use": "绝对不给！(守财奴)"
-    },
-    "CubePreserve": {
-      "name": "Research.CubePreserve.name",
-      "help": "Research.CubePreserve.help"
     },
     "UseCoin": {
       "name": "🪙 烧物资做实验",
@@ -4325,18 +4306,6 @@
     "NotifyOpsiMail": {
       "name": "🔔 侵蚀/短猫小纸条推送",
       "help": "人家会把侵蚀1和短猫的战报通通发给指挥官喵！不过信息很多，嫌吵的话就把人家关进小黑屋吧(╥﹏╥)..."
-    },
-    "LauncherPush": {
-      "name": "OpsiGeneral.LauncherPush.name",
-      "help": "OpsiGeneral.LauncherPush.help"
-    },
-    "IndependentPush": {
-      "name": "OpsiGeneral.IndependentPush.name",
-      "help": "OpsiGeneral.IndependentPush.help"
-    },
-    "OpsiOnePushConfig": {
-      "name": "OpsiGeneral.OpsiOnePushConfig.name",
-      "help": "OpsiGeneral.OpsiOnePushConfig.help"
     }
   },
   "OpsiAshBeacon": {
@@ -4411,6 +4380,18 @@
     "ForceRun": {
       "name": "🔥 赶路模式 (无视间隔)",
       "help": "开启后会消耗额外的体力加速前进！不急的话，还是慢慢推比较省体力喵~"
+    },
+    "IfSkipSirenResearch": {
+      "name": "⏩ 暂时绕开塞壬研究装置",
+      "help": "为了卡Bug大业，我们要战术性跳过一些装置喵！\n（悄悄话：这个功能还在实验中，可能会有神秘小状况发生喵...）",
+      "0": "一个都不放过喵！",
+      "6": "只跳过6级装置",
+      "65": "跳过5级和6级",
+      "654": "4/5/6级全部绕道"
+    },
+    "SkipedSirenResearch": {
+      "name": "📔 已经绕过的装置清单",
+      "help": "这是人家的小本本自动记的，指挥官不用管它喵~ 重置进度的时候它也会跟着清空的喵！"
     },
     "LastZone": {
       "name": "🏁 上一次完成的海域",
@@ -4576,6 +4557,24 @@
     "APPreserveUntilReset": {
       "name": "🔋保留行动力直到月底",
       "help": "喵~要把体力存到月底大决战吗喵？'保留 X 点行动力' 的设置，在大世界重置前几天是不会减少的哦~\n⚠️注意喵：开启后，这些宝贵的体力只会在『跨月每日任务』里花掉。如果不打开跨月任务，这个设置就没用啦，这意味着指挥官得亲自手动花掉它们才能赚得盆满钵满喵！"
+    },
+    "SirenDetectorSearch_Enable": {
+      "name": "📡自动寻找塞壬探测装置",
+      "help": "喵喵雷达启动！在短猫相接任务中，自动帮忙寻找闪闪发光的塞壬探测装置，并把坐标写进小本本里！\n（探头）人家只会在中心海域（region 5）寻找哦，其他偏僻的地方才不去呢~"
+    },
+    "SirenDetectorSearch_HazardLevel": {
+      "name": "☣️塞壬探测装置侵蚀等级",
+      "help": "要在多危险的海域寻找呢？人家会顺时针去中心海域探险哦~\n中心海域只有5级和6级两种危险度啦，选错的话人家可找不到哦！\n⚠️注意：依然只在中心海域（region 5）里转悠，不会去其他区域的！",
+      "5": "5级海域喵！",
+      "6": "6级海域喵！"
+    },
+    "SirenDetectorSearch_StopAfterFound": {
+      "name": "🛑寻找 X 个探测器后乖乖回家",
+      "help": "见好就收喵！找到指定数量的宝贝塞壬装置后，就不找啦，回去继续做正常的短猫日常~\n（其实数量是看下面的记录表哦，如果记录里有y个，那人家就再找x-y个就停手啦！）\n如果设为 0 的话...那就是贪心鬼模式，会一直找到体力被榨干为止哦(///▽///)！"
+    },
+    "SirenDetectorSearch_FoundZones": {
+      "name": "📖已找到的探测器小本本",
+      "help": "这里记录了所有找到的塞壬探测装置海域坐标哦~\n如果指挥官偷偷把某个海域的装置用掉了，记得手动在这里把记录擦掉呀(づ￣ 3￣)づ"
     }
   },
   "OpsiTarget": {
@@ -4648,20 +4647,61 @@
       "name": "🔍塞壬研究装置",
       "help": "雪风大人的严重警告：用紫币换黄币的败家玩法！如果指挥官每个月没有肝到几十万海里的话，千万千万慎用nanoda！"
     },
-    "Siren_Mode": {
-      "name": "OpsiSirenBug.Siren_Mode.name",
-      "help": "OpsiSirenBug.Siren_Mode.help",
-      "resource": "resource",
-      "enemy": "enemy"
+    "SirenBug_Enable": {
+      "name": "💥无限薅羊毛(Bug利用-实验性)",
+      "help": "利用塞壬装置的小漏洞，无限刷取高侵蚀区的宝贝资源~！\n⚠️要先打开上面的『塞壬研究装置』开关，这个魔法才会生效哦！"
     },
-    "Siren_Fleet": {
-      "name": "OpsiSirenBug.Siren_Fleet.name",
-      "help": "OpsiSirenBug.Siren_Fleet.help",
-      "0": "0",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4"
+    "SirenBug_Type": {
+      "name": "🌊海域类型切换",
+      "help": "指挥官想去哪里薅羊毛呢？是安全的后花园还是危险的荒野？",
+      "dangerous": "刺激的普通海域！",
+      "safe": "稳妥的安全海域！"
+    },
+    "SirenBug_Mode": {
+      "name": "🔍与塞壬装置的互动模式喵~",
+      "help": "怎么互动呢？探测资源就按第二个按钮，探测敌人就按第一个按钮哦喵~按对了才能赚大钱喵！",
+      "resource": "咿咿呀呀抢资源！",
+      "enemy": "等等我来打敌人！"
+    },
+    "SirenBug_Zone": {
+      "name": "📍指定薅羊毛区域(实验性)",
+      "help": "告诉人家羊毛出在哪个海域吧！输入神秘的区域ID或名字就可以啦（比如\"51\"）~\n填入0，或者删掉内容，就会解除绑定哦。"
+    },
+    "SirenBug_Grid": {
+      "name": "🎯指定吊机格子(实验性)",
+      "help": "精准打击定位！告诉人家塞壬吊机在哪个格子上，不填的话人家只能全图慢慢找啦(╥﹏╥)\n格式是一个大写字母（列）加数字（行），比如 \"B10\" 就是第2列第10行！地图左上角是 \"A1\" 哦！"
+    },
+    "SirenBug_SyncDailyCount": {
+      "name": "同步每日利用次数",
+      "help": "同步每日已利用塞壬研究装置 Bug 的次数",
+      "True": "是",
+      "False": "否"
+    },
+    "DisableTaskSwitchDuringBug": {
+      "name": "🚫薅羊毛期间请勿打扰(实验性)",
+      "help": "专注薅羊毛模式！临时屏蔽其他任务的打扰，什么委托、日常都等人家薅完再说！\n如果总是被其他任务打断施法，就把这个打开吧~",
+      "True": "打开！谁也不许烦我！",
+      "False": "关闭~随缘啦。"
+    },
+    "SirenBug_DailyCount": {
+      "name": "📅今日薅羊毛次数(实验性)",
+      "help": "今日战绩统计！刷的次数越多，每次扫图前人家就会多发呆（Sleep）几秒钟哦，不要催人家嘛！"
+    },
+    "SirenBug_DailyCountRecord": {
+      "name": "⏱️Bug次数记录时间戳(实验性)",
+      "help": "系统自己记的小本本时间，指挥官不用管它啦~"
+    },
+    "SirenBug_CountLimit": {
+      "name": "🚨自动处理极限阈值(实验性)",
+      "help": "极度危险的警戒线！可能会把塞壬吊机玩没哦，玩脱了指挥官自己负责(哼)！\n达到这个次数后，就会用一队去卡住敌人，另一队强行收菜。填 0 就是乖乖不作死，不启用它~"
+    },
+    "SirenBug_CrossDay": {
+      "name": "💤跨日灰姑娘休息时间",
+      "help": "每天晚上 23:55 到次日凌晨 00:05 暂停施法哦！不然跨天的网络波动把吊机吞掉的话，指挥官可就要哭啦！"
+    },
+    "SirenBug_AutoDisable": {
+      "name": "🥀没找到吊机自动关停",
+      "help": "呜呜，万一吊机消失了，人家会自动把开关关掉的！才不要傻傻地反复进海域浪费宝贵的体力呢！"
     }
   },
   "OpsiCheckLeveling": {
@@ -4677,47 +4717,9 @@
       "name": "🕒上次体检时间",
       "help": "记录上次检查的时间，防止人家重复工作累坏啦！一天只查一次哦，这个数值是自动记的，一般不需要改哒~"
     },
-    "CheckInterval": {
-      "name": "OpsiCheckLeveling.CheckInterval.name",
-      "help": "OpsiCheckLeveling.CheckInterval.help"
-    },
-    "EnableCustomCheck": {
-      "name": "OpsiCheckLeveling.EnableCustomCheck.name",
-      "help": "OpsiCheckLeveling.EnableCustomCheck.help",
-      "True": "True",
-      "False": "False"
-    },
-    "CustomCheckPositions": {
-      "name": "OpsiCheckLeveling.CustomCheckPositions.name",
-      "help": "OpsiCheckLeveling.CustomCheckPositions.help"
-    },
     "DelayAfterFull": {
       "name": "😴满级后推迟任务",
       "help": "大家经验都满了，好累哦！到达目标后把这个任务往后推迟休息一下吧~"
-    }
-  },
-  "OpsiFleetAutoChange": {
-    "_info": {
-      "name": "OpsiFleetAutoChange._info.name",
-      "help": "OpsiFleetAutoChange._info.help"
-    },
-    "Enable": {
-      "name": "OpsiFleetAutoChange.Enable.name",
-      "help": "OpsiFleetAutoChange.Enable.help",
-      "True": "True",
-      "False": "False"
-    },
-    "CooldownHours": {
-      "name": "OpsiFleetAutoChange.CooldownHours.name",
-      "help": "OpsiFleetAutoChange.CooldownHours.help",
-      "12": "12",
-      "24": "24",
-      "48": "48",
-      "72": "72"
-    },
-    "LastRun": {
-      "name": "OpsiFleetAutoChange.LastRun.name",
-      "help": "OpsiFleetAutoChange.LastRun.help"
     }
   },
   "OpsiScheduling": {
@@ -4923,32 +4925,6 @@
     "RestartIntervalHours": {
       "name": "⏳ 午睡时间表 (小时)",
       "help": "每隔几个小时让模拟器去充电（重启）一次喵？"
-    }
-  },
-  "EmulatorManager": {
-    "_info": {
-      "name": "EmulatorManager._info.name",
-      "help": "EmulatorManager._info.help"
-    },
-    "RemoteSSHHost": {
-      "name": "EmulatorManager.RemoteSSHHost.name",
-      "help": "EmulatorManager.RemoteSSHHost.help"
-    },
-    "RemoteSSHPort": {
-      "name": "EmulatorManager.RemoteSSHPort.name",
-      "help": "EmulatorManager.RemoteSSHPort.help"
-    },
-    "RemoteSSHUser": {
-      "name": "EmulatorManager.RemoteSSHUser.name",
-      "help": "EmulatorManager.RemoteSSHUser.help"
-    },
-    "RemoteSSHPublicKey": {
-      "name": "EmulatorManager.RemoteSSHPublicKey.name",
-      "help": "EmulatorManager.RemoteSSHPublicKey.help"
-    },
-    "RemoteCommand": {
-      "name": "EmulatorManager.RemoteCommand.name",
-      "help": "EmulatorManager.RemoteCommand.help"
     }
   },
   "OpsiSimulatorParameters": {
@@ -5216,15 +5192,9 @@
       "ViewLineShort": "分时",
       "DataPointsCount": "共 {count} 个点",
       "CandlesCount": "共 {count} 根K线",
-      "ViewLabel": "Gui.Stat.ViewLabel",
-      "DetailLabel": "Gui.Stat.DetailLabel",
       "ViewLineButton": "分时(详细波动)",
       "ViewDayButton": "天视图(小时K)",
       "ViewMonthButton": "月视图(日K)",
-      "DetailChartTitle": "Gui.Stat.DetailChartTitle",
-      "ToggleDetailChart": "Gui.Stat.ToggleDetailChart",
-      "DetailChartOn": "Gui.Stat.DetailChartOn",
-      "DetailChartOff": "Gui.Stat.DetailChartOff",
       "LoadOpsiStatsFailed": "加载 OpSi 统计失败: {e}",
       "LoadExpStatsFailed": "加载经验统计失败: {e}",
       "DailyExpCheckTitle": "每日经验检测",
@@ -5244,9 +5214,6 @@
       "SortieCost": "出击消耗",
       "AkashiEncounters": "遇见明石次数",
       "AkashiRate": "遇见明石概率",
-      "SirenResearchDevices": "Gui.Stat.SirenResearchDevices",
-      "SirenResearchRate": "Gui.Stat.SirenResearchRate",
-      "HazardLevel": "Gui.Stat.HazardLevel",
       "AverageAP": "平均体力",
       "NetAP": "净赚体力",
       "LoopEfficiency": "循环效率",
