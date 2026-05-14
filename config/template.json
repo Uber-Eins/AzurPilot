@@ -2343,6 +2343,7 @@
       "RepairThreshold": 0.4,
       "UseRepairPack": false,
       "RepairPackThreshold": 0.9,
+      "RepairPackThresholdHazard1": 0.5,
       "DoRandomMapEvent": true,
       "AkashiShopFilter": "ActionPoint",
       "NotifyOpsiMail": true,
@@ -2622,7 +2623,8 @@
       "ExecuteFixedPatrolScan": true,
       "SkipHpCheck": false,
       "Cl1Filter": "ActionPoint",
-      "RecordNonCL1AP": true
+      "RecordNonCL1AP": true,
+      "PreserveVirtualAsset": 0
     },
     "OpsiSirenBug": {
       "SirenResearch_Enable": true,
@@ -2669,7 +2671,8 @@
       "EnableAbyssal": false,
       "EnableStronghold": false,
       "MeowStartEarlyMode": "balanced",
-      "MeowStartEarlyEnable": false
+      "MeowStartEarlyEnable": false,
+      "VirtualAssetPreserve": 0
     },
     "Storage": {
       "Storage": {}

@@ -650,6 +650,7 @@ class GeneratedConfig:
     OpsiGeneral_RepairThreshold = 0.4
     OpsiGeneral_UseRepairPack = False
     OpsiGeneral_RepairPackThreshold = 0.9
+    OpsiGeneral_RepairPackThresholdHazard1 = 0.5
     OpsiGeneral_DoRandomMapEvent = True
     OpsiGeneral_AkashiShopFilter = 'ActionPoint'
     OpsiGeneral_NotifyOpsiMail = True
@@ -731,6 +732,7 @@ class GeneratedConfig:
     OpsiHazard1Leveling_SkipHpCheck = False  # True, False
     OpsiHazard1Leveling_Cl1Filter = 'ActionPoint'
     OpsiHazard1Leveling_RecordNonCL1AP = True
+    OpsiHazard1Leveling_PreserveVirtualAsset = 0
 
     # Group `OpsiSirenBug`
     OpsiSirenBug_SirenResearch_Enable = True
@@ -761,6 +763,7 @@ class GeneratedConfig:
     OpsiScheduling_EnableStronghold = False  # True, False
     OpsiScheduling_MeowStartEarlyMode = 'balanced'  # aggressive, balanced, conservative
     OpsiScheduling_MeowStartEarlyEnable = False
+    OpsiScheduling_VirtualAssetPreserve = 0
 
     # Group `IslandSeasonTask`
     IslandSeasonTask_TaskDict = None
@@ -799,6 +802,13 @@ class GeneratedConfig:
     # Group `EmulatorManagement`
     EmulatorManagement_ScheduledEmulatorRestart = False
     EmulatorManagement_RestartIntervalHours = 4
+
+    # Group `EmulatorManager`
+    EmulatorManager_RemoteSSHHost = None
+    EmulatorManager_RemoteSSHPort = 22
+    EmulatorManager_RemoteSSHUser = None
+    EmulatorManager_RemoteSSHPublicKey = None
+    EmulatorManager_RemoteCommand = None
 
     # Group `OpsiSimulatorParameters`
     OpsiSimulatorParameters_Samples = 100000
