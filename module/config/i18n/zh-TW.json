@@ -1703,6 +1703,12 @@
       "slot_2": "使用於2號位",
       "slot_3": "使用於3號位",
       "slot_4": "使用於4號位"
+    },
+    "SkillAutoSwitch": {
+      "name": "自動切換技能",
+      "help": "自動切換到下一個尚未學習的技能進行學習",
+      "True": "開啟",
+      "False": "關閉"
     }
   },
   "ControlExpOverflow": {
@@ -2020,24 +2026,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -2054,24 +2043,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option3": {
       "name": "第 3 格生產物品",
@@ -2088,24 +2060,7 @@
     },
     "Character3": {
       "name": "第 3 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option4": {
       "name": "第 4 格生產物品",
@@ -2122,24 +2077,7 @@
     },
     "Character4": {
       "name": "第 4 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island2": {
@@ -2159,24 +2097,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -2186,24 +2107,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option3": {
       "name": "第 3 格生產物品",
@@ -2213,24 +2117,7 @@
     },
     "Character3": {
       "name": "第 3 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option4": {
       "name": "第 4 格生產物品",
@@ -2240,24 +2127,7 @@
     },
     "Character4": {
       "name": "第 4 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island3": {
@@ -2292,24 +2162,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -2334,24 +2187,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option3": {
       "name": "第 3 格生產物品",
@@ -2376,24 +2212,7 @@
     },
     "Character3": {
       "name": "第 3 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island4": {
@@ -2418,24 +2237,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -2450,24 +2252,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option3": {
       "name": "第 3 格生產物品",
@@ -2482,24 +2267,7 @@
     },
     "Character3": {
       "name": "第 3 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option4": {
       "name": "第 4 格生產物品",
@@ -2514,24 +2282,7 @@
     },
     "Character4": {
       "name": "第 4 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island5": {
@@ -2554,24 +2305,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -2584,24 +2318,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option3": {
       "name": "第 3 格生產物品",
@@ -2614,24 +2331,7 @@
     },
     "Character3": {
       "name": "第 3 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option4": {
       "name": "第 4 格生產物品",
@@ -2644,24 +2344,7 @@
     },
     "Character4": {
       "name": "第 4 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island6": {
@@ -2687,24 +2370,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -2720,24 +2386,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option3": {
       "name": "第 3 格生產物品",
@@ -2753,24 +2402,7 @@
     },
     "Character3": {
       "name": "第 3 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option4": {
       "name": "第 4 格生產物品",
@@ -2786,24 +2418,7 @@
     },
     "Character4": {
       "name": "第 4 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island7": {
@@ -2819,71 +2434,37 @@
       "name": "第 1 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "番茄",
-      "2": "黃瓜",
+      "1": "蘆筍",
+      "2": "鳳梨",
       "3": "亞麻",
       "4": "草莓",
       "5": "棉花",
       "6": "茶葉",
       "7": "薰衣草",
-      "8": "胡蘿蔔",
+      "8": "胡蘿卜",
       "9": "洋蔥"
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "番茄",
-      "2": "黃瓜",
+      "1": "蘆筍",
+      "2": "鳳梨",
       "3": "亞麻",
       "4": "草莓",
       "5": "棉花",
       "6": "茶葉",
       "7": "薰衣草",
-      "8": "胡蘿蔔",
+      "8": "胡蘿卜",
       "9": "洋蔥"
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island8": {
@@ -2899,8 +2480,8 @@
       "name": "第 1 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "莧菜飯糰",
-      "2": "番茄炒蛋",
+      "1": "涼拌雙筍",
+      "2": "蘆筍炒蝦仁",
       "3": "豆腐",
       "4": "肉末燒豆腐",
       "5": "蛋包飯",
@@ -2914,31 +2495,14 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "莧菜飯糰",
-      "2": "番茄炒蛋",
+      "1": "涼拌雙筍",
+      "2": "蘆筍炒蝦仁",
       "3": "豆腐",
       "4": "肉末燒豆腐",
       "5": "蛋包飯",
@@ -2952,24 +2516,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island9": {
@@ -2985,75 +2532,41 @@
       "name": "第 1 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "黃瓜汁",
-      "2": "西瓜汁",
+      "1": "鮮榨菠蘿汁",
+      "2": "迎春花茶",
       "3": "蘋果汁",
       "4": "香蕉芒果汁",
       "5": "蜂蜜檸檬水",
       "6": "草莓蜜沁",
       "7": "薰衣草茶",
       "8": "草莓蜂蜜冰沙",
-      "9": "花香果韻",
-      "10": "繽紛果樂園",
-      "11": "陽光蜜水"
+      "9": "陽光蜜水",
+      "10": "花香果韻",
+      "11": "繽紛果樂園"
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "黃瓜汁",
-      "2": "西瓜汁",
+      "1": "鮮榨菠蘿汁",
+      "2": "迎春花茶",
       "3": "蘋果汁",
       "4": "香蕉芒果汁",
       "5": "蜂蜜檸檬水",
       "6": "草莓蜜沁",
       "7": "薰衣草茶",
       "8": "草莓蜂蜜冰沙",
-      "9": "花香果韻",
-      "10": "繽紛果樂園",
-      "11": "陽光蜜水"
+      "9": "陽光蜜水",
+      "10": "花香果韻",
+      "11": "繽紛果樂園"
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island10": {
@@ -3082,24 +2595,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -3118,24 +2614,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island11": {
@@ -3163,24 +2642,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -3198,24 +2660,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island12": {
@@ -3240,24 +2685,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -3272,24 +2700,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island13": {
@@ -3314,24 +2725,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -3346,24 +2740,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island14": {
@@ -3386,24 +2763,7 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -3416,24 +2776,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island15": {
@@ -3449,8 +2792,8 @@
       "name": "第 1 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "茉莉精油",
-      "2": "夏季花束",
+      "1": "袋裝薺菜幹",
+      "2": "春季花束",
       "3": "布料",
       "4": "皮革",
       "5": "繩索",
@@ -3461,31 +2804,14 @@
     },
     "Character1": {
       "name": "第 1 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
       "help": "",
       "0": "不生產",
-      "1": "茉莉精油",
-      "2": "夏季花束",
+      "1": "袋裝薺菜幹",
+      "2": "春季花束",
       "3": "布料",
       "4": "皮革",
       "5": "繩索",
@@ -3496,24 +2822,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "Island16": {
@@ -3541,24 +2850,7 @@
     },
     "Character1": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     },
     "Option2": {
       "name": "第 2 格生產物品",
@@ -3576,24 +2868,7 @@
     },
     "Character2": {
       "name": "第 2 格使用角色",
-      "help": "",
-      "manjuu": "工作啾",
-      "saratoga": "薩拉託加",
-      "new_jersey": "新澤西",
-      "tashkent": "塔什幹",
-      "lemalin": "惡毒",
-      "shimakaze": "島風",
-      "akashi": "明石",
-      "ying_swei": "應瑞",
-      "chao_ho": "肇和",
-      "william_d_porter": "威廉·D·波特",
-      "chen_hai": "鎮海",
-      "unicorn": "獨角獸",
-      "cheshire": "柴郡",
-      "amagi_chan": "小天城",
-      "helena": "海倫娜",
-      "atago": "愛宕",
-      "friedrich_der_grobe": "腓特烈大帝"
+      "help": ""
     }
   },
   "GeneralShop": {
@@ -4310,6 +3585,10 @@
       "name": "任意艦船血量低於 X 後，使用維修箱修理",
       "help": "僅在開啟“使用維修箱修船”時生效\n僅在打完深淵海域、塞壬要塞、月度Boss後嘗試維修\n0.0 ~ 1.0"
     },
+    "RepairPackThresholdHazard1": {
+      "name": "任意艦船血量低於 X 後，使用維修箱修理（侵蝕1）",
+      "help": "僅在開啟“使用維修箱修船”時生效\n僅在「侵蝕1練級+」任務中嘗試維修\n0.0 ~ 1.0"
+    },
     "DoRandomMapEvent": {
       "name": "完成地圖隨機事件",
       "help": "在自律尋敵完成後重新掃描一遍地圖，購買明石商店，使用塞壬資訊收集裝置、使用塞壬探測裝置、解鎖兩艦隊機關"
@@ -4629,6 +3908,10 @@
     "RecordNonCL1AP": {
       "name": "統計非侵蝕1來源體力",
       "help": "開啟後，將統計所有來源的體力獲取資料（如明石商店購買）。關閉後，僅在侵蝕1練級任務中統計體力資料，忽略其他任務或手動操作時的體力獲取。"
+    },
+    "PreserveVirtualAsset": {
+      "name": "保留 X 點虛擬資產",
+      "help": "虛擬資產 = 體力 × 1700/30 + 黃幣 + (到月底時間/10分鐘) × 1700/30\n虛擬資產低於 X 時運行黃幣補充任務，虛擬資產包含當前黃幣和到月底的行動力價值"
     }
   },
   "OpsiSirenBug": {
@@ -4769,6 +4052,10 @@
     "MeowStartEarlyEnable": {
       "name": "啟用月末行動力自動清理",
       "help": "根據歷史短貓耗時與當前行動力，自動判斷是否需要提前開始短貓來清理月末過剩行動力；判斷基準為「下個月大世界重置時間」，不是每日伺服器刷新時間"
+    },
+    "VirtualAssetPreserve": {
+      "name": "侵蝕1練級 保留 X 點虛擬資產",
+      "help": "虛擬資產低於 X 時運行黃幣補充任務，虛擬資產 = 體力 × 1700/30 + 黃幣 + (到月底時間/10分鐘) × 1700/30"
     }
   },
   "IslandSeasonTask": {
@@ -4911,6 +4198,32 @@
     "RestartIntervalHours": {
       "name": "重啟間隔（小時）",
       "help": "每隔多少小時自動重啟一次模擬器。"
+    }
+  },
+  "EmulatorManager": {
+    "_info": {
+      "name": "模擬器管理器",
+      "help": "提供手動重啟模擬器的入口"
+    },
+    "RemoteSSHHost": {
+      "name": "遠端伺服器位址",
+      "help": "遠端伺服器的 IP 位址或域名，例如: 192.168.1.100"
+    },
+    "RemoteSSHPort": {
+      "name": "連接埠號",
+      "help": "SSH 服務連接埠，預設 22"
+    },
+    "RemoteSSHUser": {
+      "name": "SSH 使用者名稱",
+      "help": "登入 SSH 的使用者名稱，例如: root"
+    },
+    "RemoteSSHPublicKey": {
+      "name": "存取公鑰",
+      "help": "SSH 登入所需的公鑰內容（如果需要）"
+    },
+    "RemoteCommand": {
+      "name": "遠端執行指令",
+      "help": "連接成功後在遠端伺服器執行的指令，例如: docker restart alas"
     }
   },
   "OpsiSimulatorParameters": {
@@ -5279,6 +4592,9 @@
       "CommissionIncomeTotalCommissions": "Gui.Stat.CommissionIncomeTotalCommissions",
       "CommissionIncomeRecentTitle": "Gui.Stat.CommissionIncomeRecentTitle"
     },
+    "Tactical": {
+      "SkillAutoSwitch": "Gui.Tactical.SkillAutoSwitch"
+    },
     "OpsiScheduling": {
       "UseSmartSchedulingOperationCoinsPreserve": "Gui.OpsiScheduling.UseSmartSchedulingOperationCoinsPreserve",
       "OperationCoinsPreserve": "Gui.OpsiScheduling.OperationCoinsPreserve",
@@ -5293,6 +4609,28 @@
     "Misc": {
       "Enabled": "已開啟",
       "Disabled": "未開啟"
+    },
+    "OOBE": {
+      "WelcomeTitle": "歡迎使用 AzurPilot",
+      "WelcomeDescription": "讓我們完成初次設定。",
+      "WelcomeSelectLanguage": "選擇語言",
+      "ServerTitle": "選擇伺服器",
+      "ServerCN": "國服",
+      "ServerEN": "國際服 (EN)",
+      "ServerJP": "日服 (JP)",
+      "ServerTW": "台服 (TW)",
+      "EmulatorTitle": "模擬器設定",
+      "EmulatorSerial": "模擬器序號 / 位址",
+      "EmulatorPackage": "包名",
+      "ReviewTitle": "確認並建立",
+      "ReviewConfigName": "設定名稱",
+      "ReviewLanguage": "語言",
+      "ReviewServer": "伺服器",
+      "ReviewSerial": "序號",
+      "ReviewPackage": "包名",
+      "ButtonNext": "下一步",
+      "ButtonBack": "上一步",
+      "ButtonCreate": "建立並完成"
     }
   }
 }
