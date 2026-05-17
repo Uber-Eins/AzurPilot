@@ -1,0 +1,36 @@
+name: sync2mirror
+on:
+  push:
+    branches:
+      - master
+      - dev
+jobs:
+  repo-sync:
+    env:
+      gitcode_key: ${{ secrets.GITCODE_PRIVATE_KEY }}
+      gitcode_token: ${{ secrets.GITCODE_TOKEN }}
+      gitcode_user: ${{ secrets.GITCODE_USER }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Mask sensitive values
+        run: |
+          echo "::add-mask::${{ github.repository_owner }}"
+          echo "::add-mask::${{ github.event.repository.name }}"
+
+      - name: sync
+        if: env.gitcode_key && env.gitcode_token && env.gitcode_user
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan gitcode.net >> ~/.ssh/known_hosts 2>/dev/null
+          git remote add mirror "git@gitcode.net:${GITCODE_USER}/${REPO}.git" 2>/dev/null
+          git push --force mirror "${GITHUB_REF_NAME}:${GITHUB_REF_NAME}" 2>&1 | sed 's/./*/g'
+        env:
+          SSH_KEY: ${{ secrets.GITCODE_PRIVATE_KEY }}
+          GITCODE_USER: ${{ secrets.GITCODE_USER }}
+          REPO: ${{ github.event.repository.name }}

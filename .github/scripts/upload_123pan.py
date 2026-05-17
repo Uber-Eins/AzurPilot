@@ -3,31 +3,41 @@ import hashlib
 import json
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import requests
-from requests import RequestException
-
 
 API_BASE = "https://open-api.123pan.com"
 PLATFORM = "open_platform"
+MAX_WORKERS = 8
+SINGLE_UPLOAD_MAX_BYTES = 100 * 1024 * 1024  # 100MB — use single-step upload below this
+RETRY_MAX = 5
 
 
 class Pan123Error(RuntimeError):
     pass
 
 
-def request_with_retry(method, url, attempts=5, timeout=(30, 600), **kwargs):
+def mask(s):
+    """Replace all characters with *"""
+    return "*" * len(str(s))
+
+
+def log(msg):
+    print(mask(msg))
+
+
+def request_with_retry(session, method, url, attempts=RETRY_MAX, timeout=(30, 600), **kwargs):
     last_error = None
     for attempt in range(1, attempts + 1):
         try:
-            return requests.request(method, url, timeout=timeout, **kwargs)
-        except RequestException as e:
+            return session.request(method, url, timeout=timeout, **kwargs)
+        except requests.RequestException as e:
             last_error = e
             if attempt == attempts:
                 break
             wait = min(2 ** attempt, 30)
-            print(f"request failed, retrying in {wait}s ({attempt}/{attempts}): {e}")
             time.sleep(wait)
     raise last_error
 
@@ -40,23 +50,24 @@ def md5_file(path):
     return digest.hexdigest()
 
 
-def api_json(method, url, token=None, **kwargs):
+def api_json(session, method, url, token=None, **kwargs):
     headers = kwargs.pop("headers", {})
     headers["Platform"] = PLATFORM
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    response = request_with_retry(method, url, headers=headers, **kwargs)
+    response = request_with_retry(session, method, url, headers=headers, **kwargs)
     response.raise_for_status()
     data = response.json()
     if data.get("code") == 20103:
         raise Pan123Error("upload is still verifying")
     if data.get("code") != 0:
-        raise Pan123Error(f"{url} failed: code={data.get('code')}, message={data.get('message')}, response={data}")
+        raise Pan123Error(f"code={data.get('code')}, message={data.get('message')}")
     return data.get("data")
 
 
-def get_access_token(client_id, client_secret):
+def get_access_token(session, client_id, client_secret):
     data = api_json(
+        session,
         "POST",
         f"{API_BASE}/api/v1/access_token",
         headers={"Content-Type": "application/json"},
@@ -65,8 +76,9 @@ def get_access_token(client_id, client_secret):
     return data["accessToken"]
 
 
-def create_file(token, parent_file_id, remote_path, path):
+def create_file(session, token, parent_file_id, remote_path, path):
     return api_json(
+        session,
         "POST",
         f"{API_BASE}/upload/v2/file/create",
         token=token,
@@ -82,38 +94,71 @@ def create_file(token, parent_file_id, remote_path, path):
     )
 
 
-def upload_slices(token, create_data, path):
-    preupload_id = create_data["preuploadID"]
-    slice_size = int(create_data["sliceSize"])
-    server = create_data["servers"][0].rstrip("/")
-
-    with path.open("rb") as f:
-        slice_no = 1
-        while True:
-            chunk = f.read(slice_size)
-            if not chunk:
-                break
-            files = {"slice": (path.name, chunk, "application/octet-stream")}
-            data = {
-                "preuploadID": preupload_id,
-                "sliceNo": str(slice_no),
-                "sliceMD5": hashlib.md5(chunk).hexdigest(),
-            }
+def _upload_one_slice(session, server, token, preupload_id, slice_no, chunk_data):
+    """Upload a single slice. Runs in a thread."""
+    slice_md5 = hashlib.md5(chunk_data).hexdigest()
+    files = {"slice": (f"slice_{slice_no}", chunk_data, "application/octet-stream")}
+    data = {
+        "preuploadID": preupload_id,
+        "sliceNo": str(slice_no),
+        "sliceMD5": slice_md5,
+    }
+    for attempt in range(1, RETRY_MAX + 1):
+        try:
             api_json(
+                session,
                 "POST",
                 f"{server}/upload/v2/file/slice",
                 token=token,
                 data=data,
                 files=files,
+                timeout=(30, 300),
             )
-            print(f"uploaded slice {slice_no}: {path}")
-            slice_no += 1
+            return slice_no
+        except Exception:
+            if attempt == RETRY_MAX:
+                raise
+            time.sleep(min(2 ** attempt, 30))
 
 
-def complete_upload(token, preupload_id):
+def upload_slices_parallel(token, create_data, path):
+    preupload_id = create_data["preuploadID"]
+    slice_size = int(create_data["sliceSize"])
+    server = create_data["servers"][0].rstrip("/")
+
+    chunks = []
+    with path.open("rb") as f:
+        while True:
+            chunk = f.read(slice_size)
+            if not chunk:
+                break
+            chunks.append(chunk)
+
+    total = len(chunks)
+    if total == 0:
+        return
+
+    log(f"uploading {total} slices ({slice_size}B each)")
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {}
+        for i, chunk in enumerate(chunks, start=1):
+            # Each thread gets its own session for connection reuse
+            s = requests.Session()
+            futures[executor.submit(_upload_one_slice, s, server, token, preupload_id, i, chunk)] = i
+
+        done = 0
+        for future in as_completed(futures):
+            slice_no = future.result()
+            done += 1
+            log(f"slice done [{done}/{total}]")
+
+
+def complete_upload(session, token, preupload_id):
     for _ in range(30):
         try:
             data = api_json(
+                session,
                 "POST",
                 f"{API_BASE}/upload/v2/file/upload_complete",
                 token=token,
@@ -128,20 +173,64 @@ def complete_upload(token, preupload_id):
         if data.get("completed") and data.get("fileID"):
             return data["fileID"]
         time.sleep(1)
-    raise Pan123Error(f"Upload was not completed: preuploadID={preupload_id}")
+    raise Pan123Error("Upload was not completed")
 
 
-def upload_file(token, parent_file_id, local_root, path, remote_prefix):
+def single_upload(session, token, parent_file_id, remote_path, path):
+    """Single-step upload for small files (<100MB)."""
+    domain_data = api_json(
+        session,
+        "GET",
+        f"{API_BASE}/upload/v2/file/domain",
+        token=token,
+    )
+    server = domain_data[0].rstrip("/")
+
+    with path.open("rb") as f:
+        file_bytes = f.read()
+
+    files = {"file": (path.name, file_bytes, "application/octet-stream")}
+    data = {
+        "parentFileID": str(parent_file_id),
+        "filename": remote_path,
+        "etag": hashlib.md5(file_bytes).hexdigest(),
+        "size": str(len(file_bytes)),
+    }
+    result = api_json(
+        session,
+        "POST",
+        f"{server}/upload/v2/file/single/create",
+        token=token,
+        data=data,
+        files=files,
+        timeout=(30, 600),
+    )
+    if result.get("completed") and result.get("fileID"):
+        return result["fileID"]
+    raise Pan123Error("single upload did not complete")
+
+
+def upload_file(session, token, parent_file_id, local_root, path, remote_prefix):
     rel = path.relative_to(local_root).as_posix()
     remote_path = f"/{remote_prefix.strip('/')}/{rel}" if remote_prefix else f"/{rel}"
-    create_data = create_file(token, parent_file_id, remote_path, path)
+    size = path.stat().st_size
+
+    # Use single-step upload for small files
+    if size <= SINGLE_UPLOAD_MAX_BYTES:
+        log(f"single upload {size}B")
+        file_id = single_upload(session, token, parent_file_id, remote_path, path)
+        log(f"done -> {mask(file_id)}")
+        return file_id
+
+    # Large file: chunked upload with parallel slices
+    create_data = create_file(session, token, parent_file_id, remote_path, path)
     if create_data.get("reuse"):
-        print(f"reuse {remote_path} -> fileID={create_data.get('fileID')}")
+        log(f"reuse -> {mask(create_data.get('fileID'))}")
         return create_data.get("fileID")
 
-    upload_slices(token, create_data, path)
-    file_id = complete_upload(token, create_data["preuploadID"])
-    print(f"uploaded {remote_path} -> fileID={file_id}")
+    upload_slices_parallel(token, create_data, path)
+    file_id = complete_upload(session, token, create_data["preuploadID"])
+    log(f"done -> {mask(file_id)}")
     return file_id
 
 
@@ -156,14 +245,21 @@ def main():
     client_secret = os.environ["PAN123_CLIENT_SECRET"]
     source = Path(args.source)
 
-    token = get_access_token(client_id, client_secret)
+    session = requests.Session()
+    token = get_access_token(session, client_id, client_secret)
+
     files = sorted(
         path for path in source.rglob("*")
         if path.is_file() and (path.name == "latest.json" or path.suffix == ".zip")
     )
-    print(f"uploading {len(files)} file(s) from {source} to /{args.remote_prefix.strip('/')}")
+
+    log(f"total {len(files)} file(s)")
     for path in files:
-        upload_file(token, args.parent_file_id, source, path, args.remote_prefix)
+        try:
+            upload_file(session, token, args.parent_file_id, source, path, args.remote_prefix)
+        except Exception as e:
+            log(f"FAIL: {type(e).__name__}")
+            raise
 
 
 if __name__ == "__main__":
