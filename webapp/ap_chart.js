@@ -99,12 +99,28 @@
         ctx.scale(dpr, dpr);
         var oc = ovCv.getContext("2d");
 
-        // 硬币刻度标签布局常量
-        var COIN_TICK_X = 8;
-        var COIN_TICK_BASELINE = 4;
-        var COIN_TICK_STACK_GAP = 11;
+        // 刻度标签布局常量（统一管理，左右两侧保持一致）
+        var TICK_CONFIG = {
+            x: 8,                    // 刻度标签距离边界的水平距离
+            baseline: 4,             // 刻度标签的垂直基线偏移
+            stackGap: 11,            // 多行刻度标签之间的垂直间距
+            count: 5,                // 刻度数量（0-5共6个刻度）
+            padding: 0.08            // 数据范围两端的留白比例
+        };
+        
+        // 边距配置常量
+        var PADDING_CONFIG = {
+            base: 52,                // 基础边距
+            extended: 110,           // 扩展边距（有额外刻度时）
+            top: 20,
+            bottom: 52
+        };
 
-        pad = { t: 20, r: showCoins ? 110 : 20, b: 52, l: 52 };
+        // 根据是否有资产数据动态调整左侧边距
+        var hasLeftAssets = hasVirtualAssetSeries || hasAssetSeries;
+        var leftPadding = hasLeftAssets ? PADDING_CONFIG.extended : PADDING_CONFIG.base;
+        var rightPadding = showCoins ? PADDING_CONFIG.extended : PADDING_CONFIG.base;
+        pad = { t: PADDING_CONFIG.top, r: rightPadding, b: PADDING_CONFIG.bottom, l: leftPadding };
         gW = W - pad.l - pad.r;
         gH = H - pad.t - pad.b;
 
@@ -123,42 +139,54 @@
         var allRng = allMax - allMin || 1;
         allMax += allRng * 0.08;
 
-        // ---- 黄币独立范围 ----
-        var yellowMin = Infinity, yellowMax = -Infinity;
-        var yellowCoinsLen = yellowCoins ? yellowCoins.length : 0;
-        var hasYellowCoins = showCoins && chartType === 'line' && yellowCoinsLen > 0;
-        if (hasYellowCoins) {
-            for (var i = 0; i < yellowCoinsLen; i++) {
-                if (yellowCoins[i] === null || yellowCoins[i] === undefined) continue;
-                if (yellowCoins[i] < yellowMin) yellowMin = yellowCoins[i];
-                if (yellowCoins[i] > yellowMax) yellowMax = yellowCoins[i];
+        // 通用范围计算辅助函数
+        function computeRangeWithPadding(dataArray, options) {
+            options = options || {};
+            var fixMinToZero = options.fixMinToZero || false;
+            var defaultMin = options.defaultMin !== undefined ? options.defaultMin : 0;
+            var defaultMax = options.defaultMax !== undefined ? options.defaultMax : 1000;
+            var paddingRatio = options.paddingRatio !== undefined ? options.paddingRatio : TICK_CONFIG.padding;
+            
+            var min = fixMinToZero ? 0 : Infinity;
+            var max = -Infinity;
+            
+            for (var i = 0; i < dataArray.length; i++) {
+                if (dataArray[i] === null || dataArray[i] === undefined) continue;
+                if (!fixMinToZero && dataArray[i] < min) min = dataArray[i];
+                if (dataArray[i] > max) max = dataArray[i];
             }
-            if (yellowMin === Infinity) yellowMin = 0;
-            if (yellowMax === -Infinity) yellowMax = 1000;
-            var yellowRng = yellowMax - yellowMin || 1;
-            yellowMin -= yellowRng * 0.08;
-            yellowMax += yellowRng * 0.08;
+            
+            if (!fixMinToZero && min === Infinity) min = defaultMin;
+            if (max === -Infinity) max = defaultMax;
+            
+            var range = max - min || 1;
+            if (!fixMinToZero) min -= range * paddingRatio;
+            max += range * paddingRatio;
+            
+            return { min: min, max: max };
         }
 
+        // ---- 黄币独立范围 ----
+        var yellowCoinsLen = yellowCoins ? yellowCoins.length : 0;
+        var hasYellowCoins = showCoins && chartType === 'line' && yellowCoinsLen > 0;
+        var yellowRange = hasYellowCoins ? computeRangeWithPadding(yellowCoins) : { min: 0, max: 1000 };
+        var yellowMin = yellowRange.min;
+        var yellowMax = yellowRange.max;
+
         // ---- 紫币独立范围（最小值固定 0） ----
-        var purpleMin = 0, purpleMax = -Infinity;
         var purpleCoinsLen = purpleCoins ? purpleCoins.length : 0;
         var hasPurpleCoins = showCoins && chartType === 'line' && purpleCoinsLen > 0;
-        if (hasPurpleCoins) {
-            for (var i = 0; i < purpleCoinsLen; i++) {
-                if (purpleCoins[i] === null || purpleCoins[i] === undefined) continue;
-                if (purpleCoins[i] > purpleMax) purpleMax = purpleCoins[i];
-            }
-            if (purpleMax === -Infinity) purpleMax = 1000;
-            var purpleRng = purpleMax - purpleMin || 1;
-            purpleMax += purpleRng * 0.08;
-        }
+        var purpleRange = hasPurpleCoins ? computeRangeWithPadding(purpleCoins, { fixMinToZero: true }) : { min: 0, max: 1000 };
+        var purpleMin = purpleRange.min;
+        var purpleMax = purpleRange.max;
 
         // ---- 紫币独立轴 ----
         var hasPurpleAxis = showCoins && chartType === 'line' && hasPurpleCoins;
-        // ---- 组合轴（黄币 + 虚拟资产 + 资产共用） ----
-        var hasCombined = showCoins && chartType === 'line' && (hasYellowCoins || hasVirtualAssetSeries || hasAssetSeries || hasDistanceSeries);
-        var hasExtra = hasPurpleAxis || hasCombined;
+        // ---- 组合轴（仅黄币使用，虚拟资产和资产已独立） ----
+        var hasCombined = showCoins && chartType === 'line' && hasYellowCoins;
+        // ---- 海里数独立轴 ----
+        var hasDistanceAxis = showCoins && chartType === 'line' && hasDistanceSeries;
+        var hasExtra = hasPurpleAxis || hasCombined || hasDistanceAxis;
         var combinedMin = 0, combinedMax = -Infinity;
         function scanRange(arr) {
             for (var i = 0; i < arr.length; i++) {
@@ -167,33 +195,47 @@
             }
         }
         if (hasCombined) {
+            // 只扫描黄币数据，虚拟资产和资产已使用独立Y轴
             if (hasYellowCoins) scanRange(yellowCoins);
-            if (hasVirtualAssetSeries) scanRange(lineVirtualAsset);
-            if (hasAssetSeries) scanRange(lineAsset);
-            if (hasDistanceSeries) scanRange(lineDistance);
             if (combinedMax === -Infinity) combinedMax = 1000;
             var combinedRng = combinedMax - combinedMin || 1;
             combinedMax += combinedRng * 0.08;
         }
+        
+        // ---- 海里数独立范围 ----
+        var distanceRange = hasDistanceAxis ? computeRangeWithPadding(lineDistance) : { min: 0, max: 1000 };
+        var distanceMin = distanceRange.min;
+        var distanceMax = distanceRange.max;
+        
+        // ---- 虚拟资产独立范围（用于左侧刻度） ----
+        var virtualAssetRange = hasVirtualAssetSeries ? computeRangeWithPadding(lineVirtualAsset) : { min: 0, max: 1000 };
+        var virtualAssetMin = virtualAssetRange.min;
+        var virtualAssetMax = virtualAssetRange.max;
+        
+        // ---- 资产独立范围（用于左侧刻度） ----
+        var assetRange = hasAssetSeries ? computeRangeWithPadding(lineAsset) : { min: 0, max: 1000 };
+        var assetMin = assetRange.min;
+        var assetMax = assetRange.max;
 
-        // 刻度配置（右侧标签）：第1行紫币独立，第2行黄币代表合并轴
+        // 刻度配置（右侧标签）：第1行紫币独立，第2行黄币代表合并轴，第3行海里数独立
         var EXTRA_SERIES_CONFIGS = [];
         var cfgOffset = 0;
         function addCfg(has, color, dataMin, dataMax) {
             if (!has) return;
             EXTRA_SERIES_CONFIGS.push({ color: color, dataMin: dataMin, dataMax: dataMax, offsetY: cfgOffset });
-            cfgOffset += COIN_TICK_STACK_GAP;
+            cfgOffset += TICK_CONFIG.stackGap;
         }
         addCfg(hasPurpleCoins, "#ce93d8", purpleMin, purpleMax);
         addCfg(hasCombined, "#ffd54f", combinedMin, combinedMax);
+        addCfg(hasDistanceAxis, "#1565c0", distanceMin, distanceMax);
 
-        // 系列绘制配置（所有线都要画，虚拟/资产用时间戳）
+        // 系列绘制配置（所有线都要画，虚拟/资产用时间戳和独立Y轴）
         var SERIES_DRAW = [
             { has: hasPurpleCoins, data: purpleCoins, yFn: yOfPurple, dash: [] },
             { has: hasYellowCoins, data: yellowCoins, yFn: yOfCombined, dash: [] },
-            { has: hasVirtualAssetSeries, data: lineVirtualAsset, ts: lineVirtualAssetTs, yFn: yOfCombined, dash: [] },
-            { has: hasAssetSeries, data: lineAsset, ts: lineAssetTs, yFn: yOfCombined, dash: [] },
-            { has: hasDistanceSeries, data: lineDistance, yFn: yOfCombined, dash: [] },
+            { has: hasVirtualAssetSeries, data: lineVirtualAsset, ts: lineVirtualAssetTs, yFn: yOfVirtualAsset, dash: [] },
+            { has: hasAssetSeries, data: lineAsset, ts: lineAssetTs, yFn: yOfAsset, dash: [] },
+            { has: hasDistanceSeries, data: lineDistance, yFn: yOfDistance, dash: [] },
         ];
 
         // Y 坐标映射
@@ -203,6 +245,9 @@
         function yOf(v) { return yScale(v, allMin, allMax); }
         function yOfPurple(v) { return yScale(v, purpleMin, purpleMax); }
         function yOfCombined(v) { return yScale(v, combinedMin, combinedMax); }
+        function yOfDistance(v) { return yScale(v, distanceMin, distanceMax); }
+        function yOfVirtualAsset(v) { return yScale(v, virtualAssetMin, virtualAssetMax); }
+        function yOfAsset(v) { return yScale(v, assetMin, assetMax); }
 
         // 时间感知的 x 坐标映射
         function xOfLine(i) {
@@ -213,14 +258,45 @@
             if (!hasExtra) return;
             ctx.font = "10px -apple-system, sans-serif";
             ctx.textAlign = "left";
-            for (var i = 0; i <= 5; i++) {
-                var mainVal = mainMin + (mainMax - mainMin) * (i / 5);
+            for (var i = 0; i <= TICK_CONFIG.count; i++) {
+                var mainVal = mainMin + (mainMax - mainMin) * (i / TICK_CONFIG.count);
                 var y = yOfMain(mainVal);
                 for (var ci = 0; ci < EXTRA_SERIES_CONFIGS.length; ci++) {
                     var cfg = EXTRA_SERIES_CONFIGS[ci];
-                    var val = cfg.dataMin + (cfg.dataMax - cfg.dataMin) * (i / 5);
+                    var val = cfg.dataMin + (cfg.dataMax - cfg.dataMin) * (i / TICK_CONFIG.count);
                     ctx.fillStyle = cfg.color;
-                    ctx.fillText(Math.round(val), W - pad.r + COIN_TICK_X, y + COIN_TICK_BASELINE + cfg.offsetY);
+                    ctx.fillText(Math.round(val), W - pad.r + TICK_CONFIG.x, y + TICK_CONFIG.baseline + cfg.offsetY);
+                }
+            }
+        }
+
+        // 绘制左侧资产刻度标签（虚拟资产和资产都在行动力刻度下方垂直紧贴排列）
+        // 虚拟资产和资产使用各自独立的Y轴，显示各自的数值范围
+        function drawLeftAssetTicks(ctx, yOfMain, mainMin, mainMax) {
+            if (!hasLeftAssets) return;
+            ctx.font = "10px -apple-system, sans-serif";
+            ctx.textAlign = "right";
+            
+            // 使用体力轴的Y坐标，与体力刻度对齐
+            for (var i = 0; i <= TICK_CONFIG.count; i++) {
+                var mainVal = mainMin + (mainMax - mainMin) * (i / TICK_CONFIG.count);
+                var y = yOfMain(mainVal);
+                
+                // 绘制虚拟资产刻度（使用独立Y轴的数值，在行动力刻度下方）
+                if (hasVirtualAssetSeries) {
+                    var vaVal = virtualAssetMin + (virtualAssetMax - virtualAssetMin) * (i / TICK_CONFIG.count);
+                    ctx.fillStyle = "#06b6d4";
+                    // 使用与右侧刻度相同的间距配置，确保不重叠
+                    ctx.fillText(Math.round(vaVal), pad.l - TICK_CONFIG.x, y + TICK_CONFIG.baseline + TICK_CONFIG.stackGap);
+                }
+                
+                // 绘制资产刻度（使用独立Y轴的数值，在虚拟资产刻度下方）
+                if (hasAssetSeries) {
+                    var aVal = assetMin + (assetMax - assetMin) * (i / TICK_CONFIG.count);
+                    ctx.fillStyle = "#81c784";
+                    // 如果有虚拟资产，资产刻度在虚拟资产下方；否则直接在行动力下方
+                    var offsetY = hasVirtualAssetSeries ? TICK_CONFIG.stackGap * 2 : TICK_CONFIG.stackGap;
+                    ctx.fillText(Math.round(aVal), pad.l - TICK_CONFIG.x, y + TICK_CONFIG.baseline + offsetY);
                 }
             }
         }
@@ -264,14 +340,15 @@
         ctx.font = "11px -apple-system, sans-serif";
         ctx.textAlign = "right";
         ctx.textBaseline = "middle";
-        for (var i = 0; i <= 5; i++) {
-            var v = allMin + (allMax - allMin) * (i / 5);
+        for (var i = 0; i <= TICK_CONFIG.count; i++) {
+            var v = allMin + (allMax - allMin) * (i / TICK_CONFIG.count);
             var y = yOf(v);
             ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
             ctx.fillText(Math.round(v), pad.l - 8, y);
         }
 
         drawAssetTicks(ctx, yOf, allMin, allMax);
+        drawLeftAssetTicks(ctx, yOf, allMin, allMax);
 
         var avgY = yOf(avg);
         ctx.save();
@@ -460,7 +537,7 @@
                         if (dist < closestDist_va) { closestDist_va = dist; closestIdx_va = j; }
                     }
                     if (closestIdx_va !== -1 && closestDist_va < 5)
-                        drawBead(lineVirtualAsset[closestIdx_va], "#4fc3f7", yOfCombined);
+                        drawBead(lineVirtualAsset[closestIdx_va], "#4fc3f7", yOfVirtualAsset);
                 }
                 if (seriesVisible[4] && hasAssetSeries) {
                     var closestIdx_a = -1, closestDist_a = 600000;
@@ -469,12 +546,12 @@
                         if (dist < closestDist_a) { closestDist_a = dist; closestIdx_a = j; }
                     }
                     if (closestIdx_a !== -1 && closestDist_a < 5)
-                        drawBead(lineAsset[closestIdx_a], "#81c784", yOfCombined);
+                        drawBead(lineAsset[closestIdx_a], "#81c784", yOfAsset);
                 }
 
-                // 海里数 bead
+                // 海里数 bead（使用独立轴）
                 if (hasDistanceSeries && idx < lineDistance.length && lineDistance[idx] !== null && lineDistance[idx] !== undefined && seriesVisible[5])
-                    drawBead(lineDistance[idx], "#1565c0", yOfCombined);
+                    drawBead(lineDistance[idx], "#1565c0", yOfDistance);
 
                 oc.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -689,8 +766,8 @@
                 ctx.font = "11px -apple-system, sans-serif";
                 ctx.textAlign = "right";
                 ctx.textBaseline = "middle";
-                for (var i = 0; i <= 5; i++) {
-                    var v = dMin + (dMax - dMin) * (i / 5);
+                for (var i = 0; i <= TICK_CONFIG.count; i++) {
+                    var v = dMin + (dMax - dMin) * (i / TICK_CONFIG.count);
                     var y = yScale(v, dMin, dMax);
                     ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
                     ctx.fillText(Math.round(v), pad.l - 8, y);
@@ -703,6 +780,9 @@
                 function dyOf(v) { return yScale(v, dMin, dMax); }
 
                 drawAssetTicks(ctx, dyOf, dMin, dMax);
+                
+                // 绘制左侧资产刻度
+                drawLeftAssetTicks(ctx, dyOf, dMin, dMax);
 
                 // Ap 线
                 if (seriesVisible[0]) {
