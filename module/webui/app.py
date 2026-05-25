@@ -1212,18 +1212,18 @@ class AlasGUI(Frame):
 
             labels = []
             series_map = {
-                "Oil": {"name": t("Dashboard.Oil.name"), "color": "#ff8a65", "data": []},
-                "Coin": {"name": t("Dashboard.Coin.name"), "color": "#ffd54f", "data": []},
-                "Gem": {"name": t("Dashboard.Gem.name"), "color": "#ef5350", "data": []},
-                "Pt": {"name": t("Dashboard.Pt.name"), "color": "#4fc3f7", "data": []},
-                "Cube": {"name": t("Dashboard.Cube.name"), "color": "#4dd0e1", "data": []},
-                "Core": {"name": t("Dashboard.Core.name"), "color": "#b0bec5", "data": []},
-                "Medal": {"name": t("Dashboard.Medal.name"), "color": "#ffd740", "data": []},
-                "Merit": {"name": t("Dashboard.Merit.name"), "color": "#ffab00", "data": []},
-                "GuildCoin": {"name": t("Dashboard.GuildCoin.name"), "color": "#a1887f", "data": []},
-                "ActionPoint": {"name": t("Dashboard.ActionPoint.name"), "color": "#64b5f6", "data": []},
-                "YellowCoin": {"name": t("Dashboard.YellowCoin.name"), "color": "#ffa726", "data": []},
-                "PurpleCoin": {"name": t("Dashboard.PurpleCoin.name"), "color": "#ce93d8", "data": []},
+                "Oil": {"name": t("Gui.Dashboard.Oil"), "color": "#ff8a65", "data": []},
+                "Coin": {"name": t("Gui.Dashboard.Coin"), "color": "#ffd54f", "data": []},
+                "Gem": {"name": t("Gui.Dashboard.Gem"), "color": "#ef5350", "data": []},
+                "Pt": {"name": t("Gui.Dashboard.Pt"), "color": "#4fc3f7", "data": []},
+                "Cube": {"name": t("Gui.Dashboard.Cube"), "color": "#4dd0e1", "data": []},
+                "Core": {"name": t("Gui.Dashboard.Core"), "color": "#b0bec5", "data": []},
+                "Medal": {"name": t("Gui.Dashboard.Medal"), "color": "#ffd740", "data": []},
+                "Merit": {"name": t("Gui.Dashboard.Merit"), "color": "#ffab00", "data": []},
+                "GuildCoin": {"name": t("Gui.Dashboard.GuildCoin"), "color": "#a1887f", "data": []},
+                "ActionPoint": {"name": t("Gui.Dashboard.ActionPoint"), "color": "#64b5f6", "data": []},
+                "YellowCoin": {"name": t("Gui.Dashboard.YellowCoin"), "color": "#ffa726", "data": []},
+                "PurpleCoin": {"name": t("Gui.Dashboard.PurpleCoin"), "color": "#ce93d8", "data": []},
             }
 
             key_map = {
