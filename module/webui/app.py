@@ -454,11 +454,7 @@ class AlasGUI(Frame):
                     get_virtual_asset_timeline,
                 )
 
-                instance_name = (
-                    self.alas_name
-                    if hasattr(self, "alas_name") and self.alas_name
-                    else None
-                )
+                instance_name = getattr(self, "alas_name", None)
                 if not instance_name:
                     from module.config.utils import alas_instance
 
@@ -481,9 +477,6 @@ class AlasGUI(Frame):
                         t("Gui.Stat.Refresh"), onclick=_render_ap_chart, color="off"
                     )
                 return
-
-            from datetime import datetime as _dt
-            import json as _json
 
             def _get_cl5_efficiency():
                 default = 1700.0 / 30.0
@@ -512,7 +505,7 @@ class AlasGUI(Frame):
             for pt in timeline:
                 ts_raw = pt.get("ts", "")
                 try:
-                    dt = _dt.fromisoformat(ts_raw)
+                    dt = datetime.fromisoformat(ts_raw)
                 except Exception:
                     continue
                 raw_points.append(
@@ -543,7 +536,7 @@ class AlasGUI(Frame):
             chart_points = []
             is_detail_mode = False
 
-            today = _dt.now().date()
+            today = datetime.now().date()
             today_points = [p for p in raw_points if p["dt"].date() == today]
             if not today_points and raw_points:
                 last_date = raw_points[-1]["dt"].date()
@@ -672,7 +665,7 @@ class AlasGUI(Frame):
                     if distance_val is not None:
                         ts_raw = pt.get("ts", "")
                         try:
-                            distance_dt = _dt.fromisoformat(ts_raw)
+                            distance_dt = datetime.fromisoformat(ts_raw)
                             distance_raw_points.append({
                                 "dt": distance_dt,
                                 "distance": int(distance_val),
@@ -685,7 +678,7 @@ class AlasGUI(Frame):
                 for pt in coins_timeline:
                     ts_raw = pt.get("ts", "")
                     try:
-                        dt = _dt.fromisoformat(ts_raw)
+                        dt = datetime.fromisoformat(ts_raw)
                     except Exception:
                         continue
                     coins_raw_points.append(
@@ -803,7 +796,7 @@ class AlasGUI(Frame):
                     ts_raw = pt.get("ts", "")
                     if ts_raw:
                         try:
-                            va_dt = _dt.fromisoformat(ts_raw)
+                            va_dt = datetime.fromisoformat(ts_raw)
                             asset_value = _snapshot_float(pt, "asset")
                             virtual_asset_value = _snapshot_float(pt, "virtual_asset")
                             if asset_value is None:
@@ -902,28 +895,28 @@ class AlasGUI(Frame):
                 js_tpl.replace(
                     "__CHART_TYPE__", "line" if is_detail_mode else current_view
                 )
-                .replace("__LABELS__", _json.dumps(labels, ensure_ascii=False))
-                .replace("__OPENS__", _json.dumps(opens))
-                .replace("__HIGHS__", _json.dumps(highs))
-                .replace("__LOWS__", _json.dumps(lows))
-                .replace("__CLOSES__", _json.dumps(closes))
-                .replace("__COUNTS__", _json.dumps(counts))
-                .replace("__AP__", _json.dumps(ap_list))
-                .replace("__AP_TS__", _json.dumps(ap_ts))
+                .replace("__LABELS__", json.dumps(labels, ensure_ascii=False))
+                .replace("__OPENS__", json.dumps(opens))
+                .replace("__HIGHS__", json.dumps(highs))
+                .replace("__LOWS__", json.dumps(lows))
+                .replace("__CLOSES__", json.dumps(closes))
+                .replace("__COUNTS__", json.dumps(counts))
+                .replace("__AP__", json.dumps(ap_list))
+                .replace("__AP_TS__", json.dumps(ap_ts))
                 .replace("__AVG__", str(ap_avg))
                 .replace("__CHART_ID__", chart_id)
                 .replace("__IS_DETAIL_MODE__", "true" if is_detail_mode else "false")
                 .replace(
-                    "__SOURCES__", _json.dumps(detail_sources if is_detail_mode else [])
+                    "__SOURCES__", json.dumps(detail_sources if is_detail_mode else [])
                 )
-                .replace("__YELLOW_COINS__", _json.dumps(yellow_coins_list))
-                .replace("__PURPLE_COINS__", _json.dumps(purple_coins_list))
-                .replace("__COINS_SOURCES__", _json.dumps(coins_sources_list))
-                .replace("__VIRTUAL_ASSET__", _json.dumps(virtual_asset_list))
-                .replace("__VIRTUAL_ASSET_TS__", _json.dumps(virtual_asset_ts_list))
-                .replace("__ASSET__", _json.dumps(asset_list))
-                .replace("__ASSET_TS__", _json.dumps(asset_ts_list))
-                .replace("__DISTANCE__", _json.dumps(distance_list))
+                .replace("__YELLOW_COINS__", json.dumps(yellow_coins_list))
+                .replace("__PURPLE_COINS__", json.dumps(purple_coins_list))
+                .replace("__COINS_SOURCES__", json.dumps(coins_sources_list))
+                .replace("__VIRTUAL_ASSET__", json.dumps(virtual_asset_list))
+                .replace("__VIRTUAL_ASSET_TS__", json.dumps(virtual_asset_ts_list))
+                .replace("__ASSET__", json.dumps(asset_list))
+                .replace("__ASSET_TS__", json.dumps(asset_ts_list))
+                .replace("__DISTANCE__", json.dumps(distance_list))
                 .replace("__SHOW_COINS__", "true" if show_coins else "false")
             )
             from pywebio.session import run_js
@@ -1196,13 +1189,10 @@ class AlasGUI(Frame):
             try:
                 from module.statistics.opsi_month import get_resource_timeline
 
-                instance_name = (
-                    self.alas_name
-                    if hasattr(self, "alas_name") and self.alas_name
-                    else None
-                )
+                instance_name = getattr(self, "alas_name", None)
                 if not instance_name:
                     from module.config.utils import alas_instance
+
                     all_instances = alas_instance()
                     instance_name = all_instances[0] if all_instances else None
 
@@ -1220,41 +1210,38 @@ class AlasGUI(Frame):
                     )
                 return
 
-            from datetime import datetime as _dt
-            import json as _json
-
             labels = []
             series_map = {
-                "Oil": {"name": "石油", "color": "#ff8a65", "data": []},
-                "Coin": {"name": "物资", "color": "#ffd54f", "data": []},
-                "Gem": {"name": "钻石", "color": "#ef5350", "data": []},
-                "Pt": {"name": "活动Pt", "color": "#4fc3f7", "data": []},
-                "Cube": {"name": "魔方", "color": "#4dd0e1", "data": []},
-                "Core": {"name": "核心数据", "color": "#b0bec5", "data": []},
-                "Medal": {"name": "勋章", "color": "#ffd740", "data": []},
-                "Merit": {"name": "功勋", "color": "#ffab00", "data": []},
-                "GuildCoin": {"name": "舰队币", "color": "#a1887f", "data": []},
-                "ActionPoint": {"name": "行动力", "color": "#64b5f6", "data": []},
-                "YellowCoin": {"name": "黄币", "color": "#ffa726", "data": []},
-                "PurpleCoin": {"name": "紫币", "color": "#ce93d8", "data": []},
+                "Oil": {"name": t("Dashboard.Oil.name"), "color": "#ff8a65", "data": []},
+                "Coin": {"name": t("Dashboard.Coin.name"), "color": "#ffd54f", "data": []},
+                "Gem": {"name": t("Dashboard.Gem.name"), "color": "#ef5350", "data": []},
+                "Pt": {"name": t("Dashboard.Pt.name"), "color": "#4fc3f7", "data": []},
+                "Cube": {"name": t("Dashboard.Cube.name"), "color": "#4dd0e1", "data": []},
+                "Core": {"name": t("Dashboard.Core.name"), "color": "#b0bec5", "data": []},
+                "Medal": {"name": t("Dashboard.Medal.name"), "color": "#ffd740", "data": []},
+                "Merit": {"name": t("Dashboard.Merit.name"), "color": "#ffab00", "data": []},
+                "GuildCoin": {"name": t("Dashboard.GuildCoin.name"), "color": "#a1887f", "data": []},
+                "ActionPoint": {"name": t("Dashboard.ActionPoint.name"), "color": "#64b5f6", "data": []},
+                "YellowCoin": {"name": t("Dashboard.YellowCoin.name"), "color": "#ffa726", "data": []},
+                "PurpleCoin": {"name": t("Dashboard.PurpleCoin.name"), "color": "#ce93d8", "data": []},
             }
 
+            key_map = {
+                "guildcoin": "guild_coin",
+                "actionpoint": "action_point",
+                "yellowcoin": "yellow_coin",
+                "purplecoin": "purple_coin",
+            }
             for pt in timeline:
                 ts_raw = pt.get("ts", "")
                 try:
-                    dt = _dt.fromisoformat(ts_raw)
+                    dt = datetime.fromisoformat(ts_raw)
                 except Exception:
                     continue
                 labels.append(dt.strftime("%m-%d %H:%M"))
                 for key in series_map:
                     raw_val = pt.get(key.lower())
                     if raw_val is None:
-                        key_map = {
-                            "guildcoin": "guild_coin",
-                            "actionpoint": "action_point",
-                            "yellowcoin": "yellow_coin",
-                            "purplecoin": "purple_coin",
-                        }
                         col = key_map.get(key.lower())
                         if col:
                             raw_val = pt.get(col)
@@ -1330,8 +1317,8 @@ class AlasGUI(Frame):
             js_tpl = read_webapp_template("resource_chart.js")
             js_code = (
                 js_tpl
-                .replace("__LABELS__", _json.dumps(labels, ensure_ascii=False))
-                .replace("__SERIES_DATA__", _json.dumps(series_data, ensure_ascii=False))
+                .replace("__LABELS__", json.dumps(labels, ensure_ascii=False))
+                .replace("__SERIES_DATA__", json.dumps(series_data, ensure_ascii=False))
                 .replace("__CHART_ID__", chart_id)
                 .replace("__CHART_TITLE__", t("Gui.Stat.ResourceChartTitle"))
             )
@@ -1355,11 +1342,7 @@ class AlasGUI(Frame):
                 from module.statistics.ship_exp_stats import get_ship_exp_stats
 
                 # 使用当前实例名称获取统计数据，确保不为空
-                instance_name = (
-                    self.alas_name
-                    if hasattr(self, "alas_name") and self.alas_name
-                    else None
-                )
+                instance_name = getattr(self, "alas_name", None)
                 if not instance_name:
                     # 使用第一个可用的实例
                     from module.config.utils import alas_instance
@@ -1792,11 +1775,7 @@ class AlasGUI(Frame):
                         }
                         multiplier = multiplier_map.get(mode, 1.2)
 
-                        instance_name_stat = (
-                            self.alas_name
-                            if hasattr(self, "alas_name") and self.alas_name
-                            else None
-                        )
+                        instance_name_stat = getattr(self, "alas_name", None)
                         if not instance_name_stat:
                             from module.config.utils import alas_instance
 
@@ -1964,11 +1943,7 @@ class AlasGUI(Frame):
                         return
 
                     try:
-                        instance_name_local = (
-                            self.alas_name
-                            if hasattr(self, "alas_name") and self.alas_name
-                            else None
-                        )
+                        instance_name_local = getattr(self, "alas_name", None)
                         s_local = (
                             get_opsi_stats(instance_name=instance_name_local).summary()
                             or {}
@@ -2128,11 +2103,7 @@ class AlasGUI(Frame):
                 )
 
                 # 使用当前实例名称获取统计数据，确保不为空
-                instance_name = (
-                    self.alas_name
-                    if hasattr(self, "alas_name") and self.alas_name
-                    else None
-                )
+                instance_name = getattr(self, "alas_name", None)
                 if not instance_name:
                     # 使用第一个可用的实例
                     from module.config.utils import alas_instance
@@ -2292,11 +2263,7 @@ class AlasGUI(Frame):
                     COMMISSION_TRACKED_ITEMS,
                 )
 
-                instance_name = (
-                    self.alas_name
-                    if hasattr(self, "alas_name") and self.alas_name
-                    else None
-                )
+                instance_name = getattr(self, "alas_name", None)
                 if not instance_name:
                     from module.config.utils import alas_instance
 
