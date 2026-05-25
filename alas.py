@@ -21,6 +21,26 @@ from module.exception import *
 from module.logger import logger
 from module.notify import handle_notify, notify_webui
 
+# 缓存 i18n 任务名查找
+_i18n_task_names = None
+def _get_task_display_name(task_command):
+    """从 i18n 获取任务的中文显示名，找不到则返回英文名"""
+    global _i18n_task_names
+    if _i18n_task_names is None:
+        try:
+            import json
+            from pathlib import Path
+            i18n_file = Path("./module/config/i18n/zh-CN.json")
+            if i18n_file.exists():
+                data = json.loads(i18n_file.read_text(encoding="utf-8"))
+                _i18n_task_names = {
+                    k: v.get("name", k)
+                    for k, v in data.get("Task", {}).items()
+                }
+        except Exception:
+            _i18n_task_names = {}
+    return _i18n_task_names.get(task_command, task_command)
+
 
 RESTART_SENSITIVE_TASKS = ['Commission', 'Research']
 
@@ -979,6 +999,25 @@ class AzurLaneAutoScript:
                 success = self.run(inflection.underscore(task))
                 logger.info(f'调度器: 结束任务 `{task}`')
                 self.is_first_task = False
+
+                # 每任务推送通知（须在 config_generated 刷新前读取）
+                if success is not None:
+                    try:
+                        if getattr(self.config, 'Scheduler_PushNotification', False):
+                            if success == True:
+                                status = '成功'
+                            elif success == 'recoverable':
+                                status = '成功（有可恢复错误需关注）'
+                            else:
+                                status = '失败'
+                            task_display = _get_task_display_name(task)
+                            handle_notify(
+                                self.config.Error_OnePushConfig,
+                                title=f"[Alas] <{self.config_name}> {task_display} {status}",
+                                content=f"<{self.config_name}> 任务 {task_display} —— {status}",
+                            )
+                    except Exception:
+                        logger.warning('每任务推送通知异常，已跳过')
 
                 # 检查失败
                 # 单个任务连续失败三次终止程序
