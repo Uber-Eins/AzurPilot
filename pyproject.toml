@@ -57,5 +57,16 @@ dev = [
 ]
 
 [tool.uv]
-index-url = "https://mirrors.aliyun.com/pypi/simple/"
+index = [
+    { url = "https://mirrors.aliyun.com/pypi/simple/" },
+    { url = "https://pypi.tuna.tsinghua.edu.cn/simple/" },
+    { url = "https://mirrors.cloud.tencent.com/pypi/simple/" },
+    { url = "https://repo.huaweicloud.com/repository/pypi/simple/" },
+    { url = "https://pypi.mirrors.ustc.edu.cn/simple/" },
+    { url = "https://mirrors.bfsu.edu.cn/pypi/web/simple/" },
+    { url = "https://pypi.douban.com/simple/" },
+    { url = "https://pypi.hustunique.com/" },
+    { url = "https://pypi.sdutlinux.org/" },
+]
+index-url = "https://pypi.org/simple/"
 package = false
